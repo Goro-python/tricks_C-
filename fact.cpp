@@ -5,12 +5,7 @@ using namespace std;
 
 
 
-long long fibonacci_naive(long long n) {
-	if (n <= 1)
-		return n;
 
-	return fibonacci_naive(n - 1) + fibonacci_naive(n - 2);
-}
 
 long long  fibonacci_fast(long long n) {
 	// write your code here
@@ -168,21 +163,7 @@ long long  last_fib_mod_m(long long n, long long m)
 	return fibonacci_fast_mod_m(r,m);
 }
 
-long long get_fibonacci_huge_naive(long long n, long long m) {
-	if (n <= 1)
-		return n;
 
-	long long previous = 0;
-	long long current = 1;
-
-	for (long long i = 0; i < n - 1; ++i) {
-		long long tmp_previous = previous;
-		previous = current;
-		current = tmp_previous + current;
-	}
-
-	return current % m;
-}
 
 int fibonacci_sum_last_digit_fast_0_log_n(long long n) {
 	int number = last_fib_mod_m(n + 2, 10);
@@ -212,42 +193,8 @@ int fibonacci_partial_sum_last_digit_fast_0_log_n(long long m, long long n) {
 	}
 }
 
-int fibonacci_sum_naive(long long n) {
-	if (n <= 1)
-		return n;
 
-	long long previous = 0;
-	long long current = 1;
-	long long sum = 1;
 
-	for (long long i = 0; i < n - 1; ++i) {
-		long long tmp_previous = previous;
-		previous = current;
-		current = tmp_previous + current;
-		sum += current;
-	}
-
-	return sum % 10;
-}
-
-long long get_fibonacci_partial_sum_naive(long long from, long long to) {
-	long long sum = 0;
-
-	long long current = 0;
-	long long next = 1;
-
-	for (long long i = 0; i <= to; ++i) {
-		if (i >= from) {
-			sum += current;
-		}
-
-		long long new_current = next;
-		next = next + current;
-		current = new_current;
-	}
-
-	return sum % 10;
-}
 
 int last_digit_sum_squares(long long n)
 {
@@ -255,25 +202,8 @@ int last_digit_sum_squares(long long n)
 	return ((last_fib_mod_m(n + 1,m)*last_fib_mod_m(n,m)) % 10);
 }
 
-int fibonacci_sum_squares_naive(long long n) {
-	if (n <= 1)
-		return n;
 
-	long long previous = 0;
-	long long current = 1;
-	long long sum = 1;
-
-	for (long long i = 0; i < n - 1; ++i) {
-		long long tmp_previous = previous;
-		previous = current;
-		current = tmp_previous + current;
-		sum += current * current;
-	}
-
-	return sum % 10;
-}
-
-void test_solution() {
+void reg_test() {
 
 	int m = 24;
 	long long fast = 0;
@@ -315,7 +245,7 @@ int main() {
 	cout << last_digit_sum_squares(n)<<"\n";
 	//cout << pisano_length(1000);
 	//cout<<last_fib_mod_m(n, m)<<"\n";
-	//test_solution();
+	//reg_test();
 	system("PAUSE");
 	return 0;
 }
